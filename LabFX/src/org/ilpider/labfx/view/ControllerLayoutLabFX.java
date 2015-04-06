@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
-//import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 public class ControllerLayoutLabFX {
@@ -36,7 +35,8 @@ public class ControllerLayoutLabFX {
 
 	private Partita partita;
 	private int numeroGiocatori;
-	private LabFXMain labFXMain;
+	private LabFXMain labFXMain;	// mi serve il riferimento per chiamare i metodi creaNuovapartita
+									// e inizializzaLayoutGiocatori
 
 	/*
 	 * metodi che gestiscono i controlli del layout
@@ -81,28 +81,38 @@ public class ControllerLayoutLabFX {
 	void doNuovaPartita(ActionEvent event) {
 
 		leggiNumeroGiocatori();
-		System.out.println(partita);
 		if (partita == null) {
-			System.out.println("nessuna partita");
+			/*
+			 * mi aspetto di entrarci solo la prima volta che viene premuto btnNuovaPartita
+			 * 
+			 * creo la nuova partita passando il numeroGiocatori
+			 * sarà la partita a creare la List<Giocatori>
+			 */
 			labFXMain.creaNuovaPartita(numeroGiocatori);
 		} else {
-			System.out.println("Esiste già " + partita);
+			/*
+			 * dovrei entrarci tutte le altre volte esclusa la prima che viene premuto btnNuovaPartita
+			 * creo la nuova partita passando la List<Giocatori> della partita gia esistente
+			 * cosi la nuova partita non crea la nuova lista e usa sempre la stessa
+			 */
+
+			// se il numGiocatori della partita attuale è uguale al rdb selezionato vuol
+			// dire che non è cambiato il numero dei giocatori e di conseguenza non devo
+			// rifare la List..gliela passo alla partita
 			if (partita.getNumeroGiocatori() == leggiNumeroGiocatori()) {
-				labFXMain.creaNuovaPartita(partita.getListaGiocatori());
+				partita.getListaGiocatori().forEach(g -> System.out.println("Esitono gia i giocatori " + g.getIDGiocatore() + " " + g.getNomeGiocatore() + " " + g.getPuntiGiocatore() + " " + g.getViewGiocatore()));
 				partita.getListaGiocatori().forEach(g -> g.setPuntiGiocatore(0));
+				labFXMain.creaNuovaPartita(partita.getListaGiocatori());
 			} else {
+				// se è cambiato il numero dei giocatori faccio nuova partita con costruttore che fa creare anche la List
 				labFXMain.creaNuovaPartita(numeroGiocatori);
 			}
 		}
-		//		labFXMain.mostraDialog();
-		// vediSeFareNuovaPartita();
-		// System.out.println("toggle selezionato: " + leggiNumeroGiocatori());
 
-		// leggiNumeroGiocatori();
-
-		// labFXMain.creaNuovaPartita();
-		// partita.setNumeroGiocatori(numeroGiocatori);
-		partita.getLayoutGiocatori();
+		/*
+		 * dopo che nella partita si è creato il layoutGiocatori, aggiorno il layoutLabFX
+		 */
+//		partita.getLayoutGiocatori();
 		labFXMain.inizializzaLayoutGiocatori(partita.getLayoutGiocatori());
 	}
 
@@ -110,10 +120,6 @@ public class ControllerLayoutLabFX {
 	void doCalcolaPunteggi(ActionEvent event) {
 		System.out.println(partita.getListaGiocatori());
 		partita.getListaGiocatori().forEach(g -> System.out.println(g.getNomeGiocatore()));
-		// System.out.println("leggo il numero giocatori della partita in corso "
-		// + partita.toString() + " e il numero giocatori è "
-		// + partita.getNumeroGiocatori());
-		// partita.creaListaGiocatori();
 	}
 
 	@FXML
@@ -124,33 +130,19 @@ public class ControllerLayoutLabFX {
 	}
 
 	/*
-	 * metodi di logica del gioco
+	 * getters e setters
 	 */
-	public void vediSeFareNuovaPartita() {
-		// List<Giocatore> listaInUso = partita.getListaGiocatori();
-		// System.out.println("vedi se fare nuova partita.." + listaInUso);
-		// System.out.println("ControllerLayoutLabFX - vediSeFareNuovaPartita" +
-		// listaInUso);
-		// listaInUso
-		// .forEach(g -> System.out
-		// .printf("printf2%n %-8s %25d %n %-8s %25s %n %-8s %25d %n %-8s %25s %n",
-		// "ID:", g.getIDGiocatore(),
-		// "Nome:", g.getNomeGiocatore(),
-		// "Punti:", g.getPuntiGiocatore(),
-		// "View:",g.getViewGiocatore()));
-	}
-
-	public Partita getPartita() {
-		return partita;
-	}
+//	public Partita getPartita() {
+//		return partita;
+//	}
 
 	public void setPartita(Partita partita) {
 		this.partita = partita;
 	}
 
-	public LabFXMain getLabFXMain() {
-		return labFXMain;
-	}
+//	public LabFXMain getLabFXMain() {
+//		return labFXMain;
+//	}
 
 	public void setLabFXMain(LabFXMain labFXMain) {
 		this.labFXMain = labFXMain;

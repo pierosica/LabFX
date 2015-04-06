@@ -12,40 +12,32 @@ public class Giocatore {
 	private AnchorPane viewGiocatore;
 	private ControllerLayoutGiocatore controllerLayoutGiocatore;
 
-	public ControllerLayoutGiocatore getControllerLayoutGiocatore() {
-		return controllerLayoutGiocatore;
-	}
-
+	/*
+	 * Costruttori
+	 */
 	public Giocatore(int IDGiocatore) {
 		super();
 		this.setIDGiocatore(IDGiocatore);
 		this.puntiGiocatore = 0;
 		setViewGiocatore();
-		this.nomeGiocatore = controllerLayoutGiocatore.leggiNomeGiocatore();
 	}
 
-	public Giocatore(String nome) {
-		super();
-		this.nomeGiocatore = nome;
-		this.puntiGiocatore = 0;
+	/*
+	 * metodi
+	 */
+	public ControllerLayoutGiocatore getControllerLayoutGiocatore() {
+		return controllerLayoutGiocatore;
 	}
 
-	public AnchorPane getViewGiocatore() {
-		return viewGiocatore;
+	/*
+	 * getters e setters
+	 */
+	public int getIDGiocatore() {
+		return IDGiocatore;
 	}
 
-	public void setViewGiocatore() {
-		try {
-			FXMLLoader loaderViewGiocatore = new FXMLLoader();
-			loaderViewGiocatore.setLocation(getClass().getResource("../view/LayoutGiocatore.fxml"));
-			this.viewGiocatore = loaderViewGiocatore.load();
-			controllerLayoutGiocatore = loaderViewGiocatore.getController();
-			controllerLayoutGiocatore.setGiocatoreModel(this);
-			// controllerLayoutGiocatore.setPuntiGiocatore(puntiGiocatore);
-			// controllerLayoutGiocatore.setIDGiocatore(IDGiocatore);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void setIDGiocatore(int iDGiocatore) {
+		IDGiocatore = iDGiocatore;
 	}
 
 	public String getNomeGiocatore() {
@@ -60,15 +52,24 @@ public class Giocatore {
 		return puntiGiocatore;
 	}
 
-	public void setPuntiGiocatore(int puntiGiocatore) {
-		this.puntiGiocatore = puntiGiocatore;
+	public AnchorPane getViewGiocatore() {
+		return viewGiocatore;
 	}
 
-	public int getIDGiocatore() {
-		return IDGiocatore;
+	private void setViewGiocatore() {
+		try {
+			FXMLLoader loaderViewGiocatore = new FXMLLoader();
+			loaderViewGiocatore.setLocation(getClass().getResource("../view/LayoutGiocatore.fxml"));
+			this.viewGiocatore = loaderViewGiocatore.load();
+			controllerLayoutGiocatore = loaderViewGiocatore.getController();
+			controllerLayoutGiocatore.setGiocatoreModel(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void setIDGiocatore(int iDGiocatore) {
-		IDGiocatore = iDGiocatore;
+	public void setPuntiGiocatore(int i) {
+		this.puntiGiocatore = i;
+		controllerLayoutGiocatore.setTxTPunti(""+i);
 	}
 }

@@ -3,7 +3,6 @@ package org.ilpider.labfx;
 import java.util.List;
 import org.ilpider.labfx.model.Giocatore;
 import org.ilpider.labfx.model.Partita;
-import org.ilpider.labfx.view.ControllerDialogNuovaPartita;
 import org.ilpider.labfx.view.ControllerLayoutLabFX;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -17,7 +16,6 @@ public class LabFXMain extends Application {
 	private Stage primaryStage;
 	private BorderPane layoutLabFXRoot;
 	private ControllerLayoutLabFX controllerLayoutLabFXRoot;
-	private ControllerDialogNuovaPartita controllerDialogNuovaPartita;
 	private Partita partita;
 
 	@Override
@@ -71,10 +69,8 @@ public class LabFXMain extends Application {
 	 * 
 	 */
 	public void creaNuovaPartita(int numeroGiocatori) {
-
 		partita = new Partita(numeroGiocatori);
 		controllerLayoutLabFXRoot.setPartita(partita);
-		// inizializzaLayoutGiocatori(partita.getLayoutGiocatori());
 	}
 
 	public void creaNuovaPartita(List<Giocatore> listaGiocatori) {
@@ -82,23 +78,14 @@ public class LabFXMain extends Application {
 		controllerLayoutLabFXRoot.setPartita(partita);
 	}
 
+	/*
+	 * getters e setters
+	 */
 	public Partita getPartita() {
 		return partita;
 	}
 
 	public void setPartita(Partita partita) {
 		this.partita = partita;
-	}
-
-	public void mostraDialog() {
-		new LabFXDialog(this);
-	}
-
-	public ControllerDialogNuovaPartita getControllerDialogNuovaPartita() {
-		return controllerDialogNuovaPartita;
-	}
-
-	public void setControllerDialogNuovaPartita(ControllerDialogNuovaPartita controllerDialogNuovaPartita) {
-		this.controllerDialogNuovaPartita = controllerDialogNuovaPartita;
 	}
 }
