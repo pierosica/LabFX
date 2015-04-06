@@ -1,7 +1,6 @@
 package org.ilpider.labfx.model;
 
 import org.ilpider.labfx.view.ControllerLayoutGiocatore;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -34,8 +33,7 @@ public class Giocatore {
 	public void setViewGiocatore() {
 		try {
 			FXMLLoader loaderViewGiocatore = new FXMLLoader();
-			loaderViewGiocatore.setLocation(getClass().getResource(
-					"../view/LayoutGiocatore.fxml"));
+			loaderViewGiocatore.setLocation(getClass().getResource("../view/LayoutGiocatore.fxml"));
 			this.viewGiocatore = loaderViewGiocatore.load();
 			controllerLayoutGiocatore = loaderViewGiocatore.getController();
 			controllerLayoutGiocatore.setGiocatoreModel(this);

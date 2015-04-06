@@ -11,7 +11,7 @@
       <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
             <Label text="Selezionare numero giocatori" />
-            <RadioButton fx:id="rdb2" mnemonicParsing="false" selected="true" text="2">
+            <RadioButton fx:id="rdb2" mnemonicParsing="false" onAction="#doRadioButtonNumero" selected="true" text="2">
                <toggleGroup>
                   <ToggleGroup fx:id="grpNumeroGiocatori" />
                </toggleGroup>

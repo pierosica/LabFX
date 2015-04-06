@@ -2,7 +2,6 @@ package org.ilpider.labfx.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.GridPane;
 
@@ -13,21 +12,28 @@ public class Partita {
 	private GridPane layoutGiocatori;
 
 	public Partita(int numeroGiocatori) {
-		this.numeroGiocatori=numeroGiocatori;
-//		System.out.println("partita creata - lista: " + numeroGiocatori);
-//		System.out.println("sono in Partita Constructor e creo la lista");
+		System.out.println("non qui");
+		this.numeroGiocatori = numeroGiocatori;
 		creaListaGiocatori(numeroGiocatori);
-		System.out.println("lista creata" + listaGiocatori);
-//		creaLayoutGiocatori(listaGiocatori);
+		listaGiocatori.forEach(g -> System.out.println("ID: " + g.getIDGiocatore() + "nome: " + g.getNomeGiocatore() + "punti: "
+				+ g.getPuntiGiocatore() + "view: " + g.getViewGiocatore()));
+		creaLayoutGiocatori(listaGiocatori);
+	}
+
+	public Partita(List<Giocatore> listaGiocatori) {
+		System.out.println("sono qui");
+		this.numeroGiocatori = listaGiocatori.size();
+		this.listaGiocatori = listaGiocatori;
+		creaLayoutGiocatori(this.listaGiocatori);
 	}
 
 	public void creaListaGiocatori(int numeroGiocatori) {
-			listaGiocatori = new ArrayList<Giocatore>();
+		listaGiocatori = new ArrayList<Giocatore>();
 
-//			for (int i = 0; i < numeroGiocatori; i++) {
-//				Giocatore g = new Giocatore(i);
-//				listaGiocatori.add(g);
-//			}
+		for (int i = 0; i < numeroGiocatori; i++) {
+			Giocatore g = new Giocatore(i);
+			listaGiocatori.add(g);
+		}
 	}
 
 	public void addGiocatoreToList(int ID, String nome) {
@@ -39,13 +45,12 @@ public class Partita {
 
 		try {
 			FXMLLoader loaderLayoutGiocatori = new FXMLLoader();
-			loaderLayoutGiocatori.setLocation(getClass().getResource(
-					"../view/LayoutGiocatori.fxml"));
+			loaderLayoutGiocatori.setLocation(getClass().getResource("../view/LayoutGiocatori.fxml"));
 			layoutGiocatori = (GridPane) loaderLayoutGiocatori.load();
 			// ciclo sulla lista per assegnare tutte le viewGiocatore al
 			// GridPane LayoutGiocatori
 			for (Giocatore g : listaGiocatori) {
-//				System.out.println("aaa");
+				// System.out.println("aaa");
 				layoutGiocatori.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
 			}
 		} catch (Exception e) {

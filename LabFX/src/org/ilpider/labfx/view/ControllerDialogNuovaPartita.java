@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +46,7 @@ public class ControllerDialogNuovaPartita {
 	@FXML
 	void doOK(ActionEvent event) {
 		System.out.println(listaTxt);
-		listaTxt.forEach(nome-> System.out.println(nome.getText()));
+		listaTxt.forEach(nome -> System.out.println(nome.getText()));
 	}
 
 	@FXML
@@ -91,10 +90,20 @@ public class ControllerDialogNuovaPartita {
 		txtNomeGiocatore4.setDisable(true);
 
 		listaTxt = new ArrayList<TextField>();
-		
+
+		sbloccaCelle();
+
+		leggiNumeroGiocatori();
+	}
+
+	/*
+	 * qui ci starebbe una gestione piu pulita
+	 * di quello che faccio con la listaTxt in initialize()
+	 */
+	private void sbloccaCelle() {
+
 		grpRdbNumeroGiocatori.selectedToggleProperty().addListener(
-				(ObservableValue<? extends Toggle> ov, Toggle old_toggle,
-						Toggle new_toggle) -> {
+				(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) -> {
 					if (grpRdbNumeroGiocatori.getSelectedToggle() != null) {
 						System.out.println("Ho selezionato il Toggle con userData: " + new_toggle.getUserData());
 						if (new_toggle.getUserData().equals(2)) {
@@ -126,7 +135,7 @@ public class ControllerDialogNuovaPartita {
 							txtNomeGiocatore2.setDisable(false);
 							txtNomeGiocatore3.setDisable(false);
 							txtNomeGiocatore4.setDisable(false);
-						
+
 							listaTxt.removeAll(listaTxt);
 							listaTxt.add(txtNomeGiocatore1);
 							listaTxt.add(txtNomeGiocatore2);
@@ -136,22 +145,13 @@ public class ControllerDialogNuovaPartita {
 					}
 				});
 
-		leggiNumeroGiocatori();
 	}
-
-		/*
-		 * qui ci starebbe una gestione piu pulita
-		 * di quello che faccio con la listaTxt in initialize()
-		 */
-//	private void sbloccaCelle() {
-//		
-//	}
 
 	public String leggiNomeGiocatore(int id) {
 		String nomeGiocatore = txtNomeGiocatore1.getText();
 		return nomeGiocatore;
 	}
-	
+
 	/*
 	 * Getters e Setters
 	 */
