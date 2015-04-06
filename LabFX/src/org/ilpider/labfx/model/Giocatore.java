@@ -12,6 +12,10 @@ public class Giocatore {
 	private AnchorPane viewGiocatore;
 	private ControllerLayoutGiocatore controllerLayoutGiocatore;
 
+	public ControllerLayoutGiocatore getControllerLayoutGiocatore() {
+		return controllerLayoutGiocatore;
+	}
+
 	public Giocatore(int IDGiocatore) {
 		super();
 		this.setIDGiocatore(IDGiocatore);

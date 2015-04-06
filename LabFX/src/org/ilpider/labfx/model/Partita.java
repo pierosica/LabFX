@@ -51,6 +51,8 @@ public class Partita {
 			// GridPane LayoutGiocatori
 			for (Giocatore g : listaGiocatori) {
 				// System.out.println("aaa");
+//				g.setPuntiGiocatore(0);
+				g.getControllerLayoutGiocatore().setPuntiGiocatore(0);
 				layoutGiocatori.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
 			}
 		} catch (Exception e) {

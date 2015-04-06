@@ -36,6 +36,8 @@ public class ControllerLayoutGiocatore {
 					System.out.println("TextField Text Changed (newValue: " + newValue + ") ...e oldValue: " + oldValue);
 					giocatoreModel.setNomeGiocatore(newValue);
 				});
+		
+		txtPuntiGiocatore.setText("");
 	}
 
 	@FXML
@@ -59,6 +61,7 @@ public class ControllerLayoutGiocatore {
 		 * numero pre fare le somme!
 		 */
 		txtPuntiGiocatore.setText("" + punti);
+		this.giocatoreModel.setPuntiGiocatore(0);
 	}
 
 	public String leggiNomeGiocatore() {

@@ -89,6 +89,7 @@ public class ControllerLayoutLabFX {
 			System.out.println("Esiste già " + partita);
 			if (partita.getNumeroGiocatori() == leggiNumeroGiocatori()) {
 				labFXMain.creaNuovaPartita(partita.getListaGiocatori());
+				partita.getListaGiocatori().forEach(g -> g.setPuntiGiocatore(0));
 			} else {
 				labFXMain.creaNuovaPartita(numeroGiocatori);
 			}

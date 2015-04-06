@@ -10,8 +10,17 @@
    <children>
       <VBox spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <TextField fx:id="txtNomeGiocatore" />
+            <TextField fx:id="txtNomeGiocatore" promptText="Nome Giocatore" />
             <TextField fx:id="txtPuntiGiocatore" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
