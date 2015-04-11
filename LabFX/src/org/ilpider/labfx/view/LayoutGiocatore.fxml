@@ -7,25 +7,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
    </rowConstraints>
    <children>
-      <HBox alignment="CENTER" layoutY="60.0" spacing="10.0" GridPane.rowIndex="2">
-         <children>
-            <Button fx:id="btnPreso01" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#doBtnPreso" prefHeight="30.0" prefWidth="30.0" text="Button" HBox.hgrow="ALWAYS" />
-            <CheckBox fx:id="chk01a" mnemonicParsing="false" />
-            <CheckBox fx:id="chk01b" mnemonicParsing="false" />
-            <CheckBox fx:id="chk01c" mnemonicParsing="false" />
-            <Button fx:id="btnTogli01" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#doBtnTogli" prefHeight="20.0" prefWidth="20.0" />
-         </children>
-      </HBox>
       <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" layoutY="33.0" GridPane.rowIndex="1" />
       <TextField fx:id="txtNomeGiocatore" layoutY="3.0" promptText="Nome Giocatore" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+            <Label text="ti hanno caricato: " />
+            <Label fx:id="lblPuntiCaricati" alignment="CENTER_RIGHT" minWidth="60.0" text="0" />
+         </children>
+      </HBox>
    </children>
 </GridPane>

@@ -2,11 +2,14 @@ package org.ilpider.labfx.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import org.ilpider.labfx.model.Giocatore;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ControllerLayoutGiocatore {
@@ -29,6 +32,8 @@ public class ControllerLayoutGiocatore {
 	private CheckBox chk01b;
 	@FXML
 	private CheckBox chk01c;
+    @FXML
+    private Label lblPuntiCaricati;
 
 	private Giocatore giocatoreModel;
 
@@ -90,5 +95,9 @@ public class ControllerLayoutGiocatore {
 
 	public void setTxtNome(String nomeGiocatore) {
 		txtNomeGiocatore.setText(nomeGiocatore);
+	}
+
+	public void setLblPuntiCaricati(int punti) {
+		lblPuntiCaricati.setText("" + punti);
 	}
 }
