@@ -76,7 +76,7 @@ public class ControllerLayoutGiocatore {
 		} else if (chk01a.isSelected()) {
 			chk01a.setSelected(false);
 		} else {
-			System.out.println("mai preso");
+			System.out.println("mai preso fisso");
 		}
 	}
 

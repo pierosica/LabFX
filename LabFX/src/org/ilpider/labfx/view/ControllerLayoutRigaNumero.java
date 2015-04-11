@@ -2,6 +2,7 @@ package org.ilpider.labfx.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.ilpider.labfx.model.RigaNumero;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,29 +24,51 @@ public class ControllerLayoutRigaNumero {
 	@FXML
 	private CheckBox chkA;
 
+	private int numero;
+	private RigaNumero rigaNumeroModel;
+
 	@FXML
 	void doBtnPreso(ActionEvent event) {
-		if (!chkA.isSelected()) {
+		if (rigaNumeroModel.isChiuso()) {
+			System.out.println("Era già chiuso");
+		} else if (!chkA.isSelected()) {
 			chkA.setSelected(true);
 		} else if (!chkB.isSelected()) {
 			chkB.setSelected(true);
 		} else if (!chkC.isSelected()) {
 			chkC.setSelected(true);
-		} else {
-			System.out.println("chiuso");
+
+			System.out.println("Il numero " + rigaNumeroModel.getNumero() + " era: " + rigaNumeroModel.isChiuso());
+
+			rigaNumeroModel.setChiuso(true);
+
+			System.out.println("Ho appena settato il numero " + rigaNumeroModel.getNumero() + " chiuso: "
+					+ rigaNumeroModel.isChiuso());
 		}
 	}
 
 	@FXML
 	void doBtnTogli(ActionEvent event) {
-		if (!chkA.isSelected()) {
-			chkA.setSelected(true);
-		} else if (!chkB.isSelected()) {
-			chkB.setSelected(true);
-		} else if (!chkC.isSelected()) {
-			chkC.setSelected(true);
+		if (rigaNumeroModel.isChiuso()) {
+			System.out.println(numero + " Era chiuso");
+		}
+		if (chkC.isSelected()) {
+			chkC.setSelected(false);
+
+			System.out.println("Era chiuso " + rigaNumeroModel.isChiuso());
+
+			rigaNumeroModel.setChiuso(false);
+
+			System.out.println("Ora è chiuso " + rigaNumeroModel.isChiuso());
+
+		} else if (chkB.isSelected()) {
+			chkB.setSelected(false);
+		} else if (chkA.isSelected()) {
+			chkA.setSelected(false);
 		} else {
-			System.out.println("chiuso");
+
+			System.out.println("mai preso " + numero + "qui");
+
 		}
 	}
 
@@ -57,5 +80,24 @@ public class ControllerLayoutRigaNumero {
 		assert btnPreso != null : "fx:id=\"btnPreso\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
 		assert chkA != null : "fx:id=\"chkA\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
 
+	}
+
+	/*
+	 * Getters e Setters
+	 */
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public RigaNumero getRigaNumeroModel() {
+		return rigaNumeroModel;
+	}
+
+	public void setRigaNumeroModel(RigaNumero rigaNumeroModel) {
+		this.rigaNumeroModel = rigaNumeroModel;
 	}
 }

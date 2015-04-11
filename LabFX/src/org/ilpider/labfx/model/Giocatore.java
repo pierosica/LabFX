@@ -1,9 +1,9 @@
 package org.ilpider.labfx.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.ilpider.labfx.view.ControllerLayoutGiocatore;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
-//import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
 public class Giocatore {
@@ -14,6 +14,8 @@ public class Giocatore {
 	private GridPane viewGiocatore;
 	private ControllerLayoutGiocatore controllerLayoutGiocatore;
 
+	private List<RigaNumero> listRigaNumero;
+
 	/*
 	 * Costruttori
 	 */
@@ -22,6 +24,7 @@ public class Giocatore {
 		this.setIDGiocatore(IDGiocatore);
 		this.puntiGiocatore = 0;
 		setViewGiocatore();
+		creaListRigaNumero();
 	}
 
 	/*
@@ -29,6 +32,16 @@ public class Giocatore {
 	 */
 	public ControllerLayoutGiocatore getControllerLayoutGiocatore() {
 		return controllerLayoutGiocatore;
+	}
+
+	public void creaListRigaNumero() {
+
+		for (int i = 0; i < 10; i++) {
+			listRigaNumero = new ArrayList<RigaNumero>();
+			RigaNumero rigaNumeroFix = new RigaNumero(i);
+			listRigaNumero.add(rigaNumeroFix);
+			this.viewGiocatore.add(rigaNumeroFix.getLayoutRigaNumero(), 0, 3 + i);
+		}
 	}
 
 	/*
@@ -66,14 +79,6 @@ public class Giocatore {
 			this.viewGiocatore = loaderViewGiocatore.load();
 			controllerLayoutGiocatore = loaderViewGiocatore.getController();
 			controllerLayoutGiocatore.setGiocatoreModel(this);
-
-//			System.out.println(viewGiocatore.getChildren());
-			
-			FXMLLoader loaderRigaNumero = new FXMLLoader();
-			loaderRigaNumero.setLocation(getClass().getResource("../view/LayoutRigaNumero.fxml"));
-			AnchorPane rigaNumero = (AnchorPane) loaderRigaNumero.load();
-			this.viewGiocatore.add(rigaNumero, 0, 3);
-		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,4 +88,12 @@ public class Giocatore {
 		this.puntiGiocatore = i;
 		controllerLayoutGiocatore.setTxtPunti("" + i);
 	}
+
+	public List<RigaNumero> getListRigaNumero() {
+		return listRigaNumero;
+	}
+
+//	public void setListRigaNumero(List<RigaNumero> listRigaNumero) {
+//		this.listRigaNumero = listRigaNumero;
+//	}
 }
