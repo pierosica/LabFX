@@ -7,28 +7,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
+
+<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <VBox spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" layoutY="60.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="txtNomeGiocatore" promptText="Nome Giocatore" />
-            <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" />
-            <HBox alignment="CENTER" spacing="10.0">
-               <children>
-                  <Button maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="Button" HBox.hgrow="ALWAYS" />
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Button maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
+            <Button fx:id="btnPreso01" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#doBtnPreso" prefHeight="30.0" prefWidth="30.0" text="Button" HBox.hgrow="ALWAYS" />
+            <CheckBox fx:id="chk01a" mnemonicParsing="false" />
+            <CheckBox fx:id="chk01b" mnemonicParsing="false" />
+            <CheckBox fx:id="chk01c" mnemonicParsing="false" />
+            <Button fx:id="btnTogli01" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#doBtnTogli" prefHeight="20.0" prefWidth="20.0" />
          </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </VBox>
+      </HBox>
+      <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" layoutY="33.0" GridPane.rowIndex="1" />
+      <TextField fx:id="txtNomeGiocatore" layoutY="3.0" promptText="Nome Giocatore" />
    </children>
-</AnchorPane>
+</GridPane>

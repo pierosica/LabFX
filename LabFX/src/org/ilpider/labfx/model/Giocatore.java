@@ -3,13 +3,15 @@ package org.ilpider.labfx.model;
 import org.ilpider.labfx.view.ControllerLayoutGiocatore;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+//import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
 
 public class Giocatore {
 
 	private int IDGiocatore;
 	private String nomeGiocatore;
 	private int puntiGiocatore;
-	private AnchorPane viewGiocatore;
+	private GridPane viewGiocatore;
 	private ControllerLayoutGiocatore controllerLayoutGiocatore;
 
 	/*
@@ -46,13 +48,14 @@ public class Giocatore {
 
 	public void setNomeGiocatore(String nomeGiocatore) {
 		this.nomeGiocatore = nomeGiocatore;
+		controllerLayoutGiocatore.setTxtNome(this.nomeGiocatore);
 	}
 
 	public int getPuntiGiocatore() {
 		return puntiGiocatore;
 	}
 
-	public AnchorPane getViewGiocatore() {
+	public GridPane getViewGiocatore() {
 		return viewGiocatore;
 	}
 
@@ -63,6 +66,14 @@ public class Giocatore {
 			this.viewGiocatore = loaderViewGiocatore.load();
 			controllerLayoutGiocatore = loaderViewGiocatore.getController();
 			controllerLayoutGiocatore.setGiocatoreModel(this);
+
+//			System.out.println(viewGiocatore.getChildren());
+			
+			FXMLLoader loaderRigaNumero = new FXMLLoader();
+			loaderRigaNumero.setLocation(getClass().getResource("../view/LayoutRigaNumero.fxml"));
+			AnchorPane rigaNumero = (AnchorPane) loaderRigaNumero.load();
+			this.viewGiocatore.add(rigaNumero, 0, 3);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,6 +81,6 @@ public class Giocatore {
 
 	public void setPuntiGiocatore(int i) {
 		this.puntiGiocatore = i;
-		controllerLayoutGiocatore.setTxTPunti(""+i);
+		controllerLayoutGiocatore.setTxtPunti("" + i);
 	}
 }

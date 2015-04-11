@@ -28,7 +28,11 @@ public class Partita {
 
 	public Partita(List<Giocatore> listaGiocatori) {
 		this.numeroGiocatori = listaGiocatori.size();
-		this.listaGiocatori = listaGiocatori;
+		List<Giocatore> lG = listaGiocatori;
+		creaListaGiocatori(this.numeroGiocatori);
+		for (int i = 0; i < lG.size(); i++) {
+			this.listaGiocatori.get(i).setNomeGiocatore(lG.get(i).getNomeGiocatore());
+		}
 		creaLayoutGiocatori(this.listaGiocatori);
 	}
 

@@ -100,7 +100,7 @@ public class ControllerLayoutLabFX {
 			// dire che non è cambiato il numero dei giocatori e di conseguenza non devo
 			// rifare la List..gliela passo alla partita
 			if (partita.getNumeroGiocatori() == leggiNumeroGiocatori()) {
-				partita.getListaGiocatori().forEach(g -> System.out.println("Esitono gia i giocatori " + g.getIDGiocatore() + " " + g.getNomeGiocatore() + " " + g.getPuntiGiocatore() + " " + g.getViewGiocatore()));
+//				partita.getListaGiocatori().forEach(g -> System.out.println("Esitono gia i giocatori " + g.getIDGiocatore() + " " + g.getNomeGiocatore() + " " + g.getPuntiGiocatore() + " " + g.getViewGiocatore()));
 				partita.getListaGiocatori().forEach(g -> g.setPuntiGiocatore(0));
 				labFXMain.creaNuovaPartita(partita.getListaGiocatori());
 			} else {
@@ -118,8 +118,8 @@ public class ControllerLayoutLabFX {
 
 	@FXML
 	void doCalcolaPunteggi(ActionEvent event) {
-		System.out.println(partita.getListaGiocatori());
-		partita.getListaGiocatori().forEach(g -> System.out.println(g.getNomeGiocatore()));
+//		System.out.println(partita.getListaGiocatori());
+//		partita.getListaGiocatori().forEach(g -> System.out.println(g.getNomeGiocatore()));
 	}
 
 	@FXML
