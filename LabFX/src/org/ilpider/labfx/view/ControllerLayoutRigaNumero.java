@@ -9,95 +9,106 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 
 public class ControllerLayoutRigaNumero {
-	@FXML
-	private ResourceBundle resources;
-	@FXML
-	private URL location;
-	@FXML
-	private CheckBox chkB;
-	@FXML
-	private CheckBox chkC;
-	@FXML
-	private Button btnTogli;
-	@FXML
-	private Button btnPreso;
-	@FXML
-	private CheckBox chkA;
 
-	private int numero;
-	private RigaNumero rigaNumeroModel;
+    @FXML
+    private ResourceBundle resources;
+    @FXML
+    private URL location;
+    @FXML
+    private CheckBox chkB;
+    @FXML
+    private CheckBox chkC;
+    @FXML
+    private Button btnTogli;
+    @FXML
+    private Button btnPreso;
+    @FXML
+    private CheckBox chkA;
 
-	@FXML
-	void doBtnPreso(ActionEvent event) {
-		if (rigaNumeroModel.isChiuso()) {
-			System.out.println("Era già chiuso");
-		} else if (!chkA.isSelected()) {
-			chkA.setSelected(true);
-		} else if (!chkB.isSelected()) {
-			chkB.setSelected(true);
-		} else if (!chkC.isSelected()) {
-			chkC.setSelected(true);
+    private int numero;
+    private RigaNumero rigaNumeroModel;
 
-			System.out.println("Il numero " + rigaNumeroModel.getNumero() + " era: " + rigaNumeroModel.isChiuso());
+    @FXML
+    void doBtnPreso(ActionEvent event) {
 
-			rigaNumeroModel.setChiuso(true);
-
-			System.out.println("Ho appena settato il numero " + rigaNumeroModel.getNumero() + " chiuso: "
-					+ rigaNumeroModel.isChiuso());
-		}
+	if (rigaNumeroModel.isMorto()) {
+	    System.out.println("sono qui");
+	    rigaNumeroModel.getGiocatoreModel().setPuntiGiocatore(rigaNumeroModel.getGiocatoreModel().getPuntiGiocatore() + numero);
+//	    rigaNumeroModel.getGiocatoreModel().getPartitaModel().sommaPunti(numero);
+	} else if (rigaNumeroModel.isChiuso()) {
+	    System.out.println("Era già chiuso");
+	    rigaNumeroModel.getGiocatoreModel().getPartitaModel().sommaPunti(numero);
+	} else if (!chkA.isSelected()) {
+	    chkA.setSelected(true);
+	} else if (!chkB.isSelected()) {
+	    chkB.setSelected(true);
+	} else if (!chkC.isSelected()) {
+	    chkC.setSelected(true);
+	    rigaNumeroModel.setChiuso(true);
+	    rigaNumeroModel.getGiocatoreModel().getPartitaModel()
+		    .isNumeroMorto(numero);
 	}
+    }
 
-	@FXML
-	void doBtnTogli(ActionEvent event) {
-		if (rigaNumeroModel.isChiuso()) {
-			System.out.println(numero + " Era chiuso");
-		}
-		if (chkC.isSelected()) {
-			chkC.setSelected(false);
+    @FXML
+    void doBtnTogli(ActionEvent event) {
 
-			System.out.println("Era chiuso " + rigaNumeroModel.isChiuso());
-
-			rigaNumeroModel.setChiuso(false);
-
-			System.out.println("Ora è chiuso " + rigaNumeroModel.isChiuso());
-
-		} else if (chkB.isSelected()) {
-			chkB.setSelected(false);
-		} else if (chkA.isSelected()) {
-			chkA.setSelected(false);
-		} else {
-
-			System.out.println("mai preso " + numero + "qui");
-
-		}
+	if (rigaNumeroModel.isChiuso()) {
+	    // System.out.println(numero + " Era chiuso");
 	}
+	if (chkC.isSelected()) {
+	    chkC.setSelected(false);
+	    rigaNumeroModel.setChiuso(false);
+	    rigaNumeroModel.getGiocatoreModel().getPartitaModel().isNumeroMorto(numero);
+	} else if (chkB.isSelected()) {
+	    chkB.setSelected(false);
+	} else if (chkA.isSelected()) {
+	    chkA.setSelected(false);
+	} else {
 
-	@FXML
-	void initialize() {
-		assert chkB != null : "fx:id=\"chkB\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
-		assert chkC != null : "fx:id=\"chkC\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
-		assert btnTogli != null : "fx:id=\"btnTogli\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
-		assert btnPreso != null : "fx:id=\"btnPreso\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
-		assert chkA != null : "fx:id=\"chkA\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+	    // System.out.println("mai preso " + numero + "qui");
 
 	}
+    }
 
-	/*
-	 * Getters e Setters
-	 */
-	public int getNumero() {
-		return numero;
-	}
+    @FXML
+    void initialize() {
 
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
+	assert chkB != null : "fx:id=\"chkB\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+	assert chkC != null : "fx:id=\"chkC\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+	assert btnTogli != null : "fx:id=\"btnTogli\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+	assert btnPreso != null : "fx:id=\"btnPreso\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+	assert chkA != null : "fx:id=\"chkA\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+    }
 
-	public RigaNumero getRigaNumeroModel() {
-		return rigaNumeroModel;
-	}
+    /*
+     * metodi
+     */
+//    public boolean isMorto() {
+//	return rigaNumeroModel.getGiocatoreModel().getPartitaModel()
+//		.isNumeroMorto(numero);
+//    }
 
-	public void setRigaNumeroModel(RigaNumero rigaNumeroModel) {
-		this.rigaNumeroModel = rigaNumeroModel;
-	}
+    /*
+     * Getters e Setters
+     */
+    public int getNumero() {
+
+	return numero;
+    }
+
+    public void setNumero(int numero) {
+
+	this.numero = numero;
+    }
+
+    public RigaNumero getRigaNumeroModel() {
+
+	return rigaNumeroModel;
+    }
+
+    public void setRigaNumeroModel(RigaNumero rigaNumeroModel) {
+
+	this.rigaNumeroModel = rigaNumeroModel;
+    }
 }
