@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutLabFX">
+<BorderPane styleClass="background" stylesheets="@labFX.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutLabFX">
    <top>
       <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
          <children>

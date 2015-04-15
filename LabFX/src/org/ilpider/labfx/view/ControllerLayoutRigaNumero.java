@@ -35,13 +35,10 @@ public class ControllerLayoutRigaNumero {
 	void doBtnPreso(ActionEvent event) {
 
 		if (rigaNumeroModel.isMorto()) {
-			System.out.println("sono qui");
 			rigaNumeroModel.getGiocatoreModel().setPuntiGiocatore(
 					rigaNumeroModel.getGiocatoreModel().getPuntiGiocatore()
 							+ numero);
-//	    rigaNumeroModel.getGiocatoreModel().getPartitaModel().sommaPunti(numero);
 		} else if (rigaNumeroModel.isChiuso()) {
-			System.out.println("Era già chiuso");
 			rigaNumeroModel.getGiocatoreModel().getPartitaModel()
 					.sommaPunti(rigaNumeroModel.getId());
 		} else if (!chkA.isSelected()) {
@@ -50,23 +47,40 @@ public class ControllerLayoutRigaNumero {
 			chkB.setSelected(true);
 		} else if (!chkC.isSelected()) {
 			chkC.setSelected(true);
+			
 			rigaNumeroModel.setChiuso(true);
+			chkA.getStyleClass().add("check-box-chiusa");
 			rigaNumeroModel.getGiocatoreModel().getPartitaModel()
 					.isNumeroMorto(IDNumero);
+
+//			rigaNumeroModel.getGiocatoreModel().isTuttoChiuso();
+			if (rigaNumeroModel.getGiocatoreModel().isTuttoChiuso()) {
+				System.out.println("giocatore: "
+						+ rigaNumeroModel.getGiocatoreModel()
+								.getNomeGiocatore() + " ha chiuso tutto: "
+						+ rigaNumeroModel.getGiocatoreModel().isTuttoChiuso());
+			}
 		}
 	}
 
 	@FXML
 	void doBtnTogli(ActionEvent event) {
 
-		if (rigaNumeroModel.isChiuso()) {
-			// System.out.println(numero + " Era chiuso");
-		}
-		if (chkC.isSelected()) {
-			chkC.setSelected(false);
+		if (rigaNumeroModel.isMorto()) {
 			rigaNumeroModel.setChiuso(false);
 			rigaNumeroModel.getGiocatoreModel().getPartitaModel()
 					.isNumeroMorto(IDNumero);
+		}
+
+		if (rigaNumeroModel.isChiuso()) {
+			 System.out.println(numero + " Era chiuso");
+		}
+
+		if (chkC.isSelected()) {
+			chkC.setSelected(false);
+			rigaNumeroModel.setChiuso(false);
+//			rigaNumeroModel.getGiocatoreModel().getPartitaModel()
+//					.isNumeroMorto(IDNumero);
 		} else if (chkB.isSelected()) {
 			chkB.setSelected(false);
 		} else if (chkA.isSelected()) {
@@ -82,19 +96,32 @@ public class ControllerLayoutRigaNumero {
 	void initialize() {
 
 		assert chkB != null : "fx:id=\"chkB\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+		assert chkA != null : "fx:id=\"chkA\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
 		assert chkC != null : "fx:id=\"chkC\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
 		assert btnTogli != null : "fx:id=\"btnTogli\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
 		assert btnPreso != null : "fx:id=\"btnPreso\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
-		assert chkA != null : "fx:id=\"chkA\" was not injected: check your FXML file 'LayoutRigaNumero.fxml'.";
+
 	}
 
 	/*
 	 * metodi
 	 */
-//    public boolean isMorto() {
-//	return rigaNumeroModel.getGiocatoreModel().getPartitaModel()
-//		.isNumeroMorto(numero);
-//    }
+
+	public void setChkMorto() {
+		System.out.println(chkA.getPseudoClassStates());
+		
+		chkA.setIndeterminate(true);
+		chkB.setIndeterminate(true);
+		chkC.setIndeterminate(true);
+		
+		System.out.println(chkA.getPseudoClassStates());
+	}
+
+	public void setChkNonMorto() {
+		chkA.setIndeterminate(false);
+		chkB.setIndeterminate(false);
+		chkC.setIndeterminate(false);
+	}
 
 	/*
 	 * Getters e Setters

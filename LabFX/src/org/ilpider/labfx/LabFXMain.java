@@ -1,9 +1,11 @@
 package org.ilpider.labfx;
 
 import java.util.List;
+
 import org.ilpider.labfx.model.Giocatore;
 import org.ilpider.labfx.model.Partita;
 import org.ilpider.labfx.view.ControllerLayoutLabFX;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -41,7 +43,7 @@ public class LabFXMain extends Application {
 			controllerLayoutLabFXRoot = loader.getController();
 			controllerLayoutLabFXRoot.setLabFXMain(this);
 			Scene scene = new Scene(layoutLabFXRoot);
-			scene.getStylesheets().add(getClass().getResource("view/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("view/labFX.css").toExternalForm());
 
 			primaryStage.setScene(scene);
 			// primaryStage.setMinWidth(800);

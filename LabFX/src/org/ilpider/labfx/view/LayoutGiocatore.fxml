@@ -7,24 +7,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
+<GridPane alignment="CENTER" stylesheets="@labFX.css" vgap="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="350.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints vgrow="NEVER" />
+      <RowConstraints vgrow="NEVER" />
+      <RowConstraints vgrow="NEVER" />
    </rowConstraints>
    <children>
-      <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" layoutY="33.0" GridPane.rowIndex="1" />
+      <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" layoutY="33.0" styleClass="text-field-punti" GridPane.rowIndex="1" />
       <TextField fx:id="txtNomeGiocatore" layoutY="3.0" promptText="Nome Giocatore" />
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+      <HBox alignment="CENTER" GridPane.rowIndex="2">
          <children>
             <Label text="ti hanno caricato: " />
-            <Label fx:id="lblPuntiCaricati" alignment="CENTER_RIGHT" minWidth="60.0" text="0" />
+            <Label fx:id="lblPuntiCaricati" alignment="CENTER_RIGHT" minWidth="60.0" styleClass="label-puntiCaricati" text="0" />
          </children>
       </HBox>
    </children>
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
 </GridPane>

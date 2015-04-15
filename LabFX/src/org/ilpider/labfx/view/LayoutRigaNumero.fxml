@@ -7,18 +7,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutRigaNumero">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background" stylesheets="@labFX.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutRigaNumero">
    <children>
-      <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="btnPreso" alignment="CENTER" maxHeight="25.0" maxWidth="30.0" minHeight="25.0" minWidth="30.0" mnemonicParsing="false" onAction="#doBtnPreso" prefHeight="25.0" prefWidth="30.0" textAlignment="CENTER">
+            <Button fx:id="btnPreso" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="25.0" minWidth="30.0" mnemonicParsing="false" onAction="#doBtnPreso" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="9.0" />
-               </font></Button>
-            <CheckBox fx:id="chkA" disable="true" mnemonicParsing="false" />
-            <CheckBox fx:id="chkB" disable="true" mnemonicParsing="false" />
-            <CheckBox fx:id="chkC" disable="true" mnemonicParsing="false" />
-            <Button fx:id="btnTogli" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#doBtnTogli" prefHeight="20.0" prefWidth="20.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="chkA" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" HBox.hgrow="ALWAYS" />
+            <CheckBox fx:id="chkB" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" HBox.hgrow="ALWAYS" />
+            <CheckBox fx:id="chkC" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnTogli" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#doBtnTogli" HBox.hgrow="ALWAYS" />
          </children>
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />

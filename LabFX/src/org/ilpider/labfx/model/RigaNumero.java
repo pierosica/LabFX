@@ -62,7 +62,13 @@ public class RigaNumero {
 	}
 
 	public void setMorto(boolean morto) {
+//		controllerLayoutRigaNumero.
 		this.morto = morto;
+		if(morto == true){
+			controllerLayoutRigaNumero.setChkMorto();
+		} else if (morto==false) {
+			controllerLayoutRigaNumero.setChkNonMorto();
+		}
 	}
 
 	public AnchorPane getLayoutRigaNumero() {

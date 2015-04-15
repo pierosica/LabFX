@@ -3,7 +3,9 @@ package org.ilpider.labfx.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
 public class Partita {
@@ -60,8 +62,10 @@ public class Partita {
 			// ciclo sulla lista per assegnare tutte le viewGiocatore al
 			// GridPane LayoutGiocatori
 			for (Giocatore g : listaGiocatori) {
-				layoutGiocatori
-						.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
+				ColumnConstraints col = new ColumnConstraints();
+				col.setFillWidth(true);
+				layoutGiocatori.getColumnConstraints().add(col);
+				layoutGiocatori.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,35 +73,46 @@ public class Partita {
 		return layoutGiocatori;
 	}
 
+	/*
+	 * controlla se tutti i giocatori hanno preso il numero
+	 * 		si - restituisce true e setta setMorto(true) a tutti i RigaNumero di tutti i giocatori
+	 * 		no - restituisce false e mette false ai RigaNumero di tutti i giocatori 
+	 */
 	public boolean isNumeroMorto(int numero) {
-		boolean morto = false;
-		listaGiocatori.forEach(g -> g.getListRigaNumero().get(numero)
-				.setMorto(false));
-		Stream<Giocatore> giocatoriIsChiuso = listaGiocatori.stream().filter(
-				p -> p.getListRigaNumero().get(numero).isChiuso());
-		if (giocatoriIsChiuso.count() == listaGiocatori.size()) {
-			morto = true;
-			System.out.println("numero: " + numero + " morto: " + morto);
-			listaGiocatori.forEach(g -> g.getListRigaNumero().get(numero)
-					.setMorto(true));
+
+		if (listaGiocatori.stream().allMatch(
+				g -> g.getListRigaNumero().get(numero).isChiuso())) {
+			Stream<Giocatore> giocatoriNumeroChiuso = listaGiocatori.stream()
+					.filter(c -> c.getListRigaNumero().get(numero).isChiuso());
+			giocatoriNumeroChiuso.forEach(n -> n.getListRigaNumero().get(numero).setMorto(true));
+			return true;
+		} else {
+			listaGiocatori.forEach(n -> n.getListRigaNumero().get(numero).setMorto(false));
+			return false;
 		}
-		return morto;
+	}
+
+	public boolean esisteWinner() {
+//		listaGiocatori.forEach(g -> g.getListRigaNumero().forEach(n -> n.isChiuso()));
+//		Stream<Giocatore> giocatoreWinner = listaGiocatori.stream().filter(
+//				w -> w.getListRigaNumero().forEach(n -> n.isChiuso()));
+		
+		return true;
 	}
 
 	public void sommaPunti(int id) {
-		System.out.println("sommo i punti: " + id);
 		if (isNumeroMorto(id)) {
-//			System.out.println("sommo i punti a me");
 		} else {
-			System.out.println("sommo i punti agli altri");
 			Stream<Giocatore> giocatoriNumeroAperto = listaGiocatori.stream()
 					.filter(a -> !a.getListRigaNumero().get(id).isChiuso());
 			giocatoriNumeroAperto.forEach(g -> g.setPuntiGiocatore(g
-					.getPuntiGiocatore() + g.getListRigaNumero().get(id).getNumero()));
+					.getPuntiGiocatore()
+					+ g.getListRigaNumero().get(id).getNumero()));
 			Stream<Giocatore> giocatoriNumeroApertoa = listaGiocatori.stream()
 					.filter(a -> !a.getListRigaNumero().get(id).isChiuso());
 			giocatoriNumeroApertoa.forEach(f -> f.setPuntiCaricati(f
-					.getPuntiCaricati() + f.getListRigaNumero().get(id).getNumero()));
+					.getPuntiCaricati()
+					+ f.getListRigaNumero().get(id).getNumero()));
 		}
 	}
 
