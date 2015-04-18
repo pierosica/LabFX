@@ -106,23 +106,36 @@ public class ControllerLayoutRigaNumero {
 	/*
 	 * metodi
 	 */
-
 	public void setChkMorto() {
-		System.out.println(chkA.getPseudoClassStates());
 		
+//		for (Node n : rigaNumeroModel.getLayoutRigaNumero().lookupAll(".check-box")) {
+//			System.out.println(rigaNumeroModel.isMorto() + "setChkMorto  trovato in controller " + n.getId() + " " + n.getPseudoClassStates());
+//		}
+
 		chkA.setIndeterminate(true);
 		chkB.setIndeterminate(true);
 		chkC.setIndeterminate(true);
-		
-		System.out.println(chkA.getPseudoClassStates());
+
+//		for (Node n : rigaNumeroModel.getLayoutRigaNumero().lookupAll(".check-box")) {
+//			System.out.println("setChkMorto  trovato in controller " + n.getId() + " " + n.getPseudoClassStates());
+//		}
 	}
 
 	public void setChkNonMorto() {
+
+//		for (Node n : rigaNumeroModel.getLayoutRigaNumero().lookupAll(".check-box")) {
+//			System.out.println("setChkNonMorto  trovato in controller " + n.getId() + " " + n.getPseudoClassStates());
+//		}
+
 		chkA.setIndeterminate(false);
 		chkB.setIndeterminate(false);
 		chkC.setIndeterminate(false);
+		
+//		for (Node n : rigaNumeroModel.getLayoutRigaNumero().lookupAll(".check-box")) {
+//			System.out.println("setChkNonMorto  trovato in controller " + n.getId() + " " + n.getPseudoClassStates());
+//		}
 	}
-
+	
 	/*
 	 * Getters e Setters
 	 */
@@ -148,6 +161,9 @@ public class ControllerLayoutRigaNumero {
 
 	public void setNumero(int valore) {
 		btnPreso.setText("" + valore);
+		if (valore == 25) {
+			btnPreso.setText("Bull");
+		}
 		this.numero = valore;
 	}
 }

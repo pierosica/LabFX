@@ -7,22 +7,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<GridPane alignment="CENTER" stylesheets="@labFX.css" vgap="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
+<GridPane alignment="TOP_CENTER" stylesheets="@labFX.css" vgap="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="350.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints vgrow="NEVER" />
-      <RowConstraints vgrow="NEVER" />
-      <RowConstraints vgrow="NEVER" />
+      <RowConstraints fillHeight="false" vgrow="NEVER" />
+      <RowConstraints fillHeight="false" vgrow="NEVER" />
+      <RowConstraints fillHeight="false" vgrow="NEVER" />
    </rowConstraints>
    <children>
-      <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" layoutY="33.0" styleClass="text-field-punti" GridPane.rowIndex="1" />
+      <HBox GridPane.rowIndex="1">
+         <children>
+            <TextField fx:id="txtPuntiGiocatore" alignment="CENTER_RIGHT" layoutY="33.0" styleClass="text-field-punti" GridPane.rowIndex="1" HBox.hgrow="ALWAYS" />
+            <VBox spacing="5.0">
+               <children>
+                  <HBox spacing="2.0">
+                     <children>
+                        <Button fx:id="btnMeno1" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnPiuMeno" styleClass="button-piu-meno" text="-1" />
+                        <Button fx:id="btnMeno10" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnPiuMeno" styleClass="button-piu-meno" text="-10" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="2.0">
+                     <children>
+                        <Button fx:id="btnPiu1" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnPiuMeno" styleClass="button-piu-meno" text="+1" VBox.vgrow="NEVER" />
+                        <Button fx:id="btnPiu10" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnPiuMeno" styleClass="button-piu-meno" text="+10" VBox.vgrow="NEVER" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
       <TextField fx:id="txtNomeGiocatore" layoutY="3.0" promptText="Nome Giocatore" />
-      <HBox alignment="CENTER" GridPane.rowIndex="2">
+      <HBox alignment="CENTER_RIGHT" spacing="20.0" GridPane.rowIndex="2">
          <children>
             <Label text="ti hanno caricato: " />
             <Label fx:id="lblPuntiCaricati" alignment="CENTER_RIGHT" minWidth="60.0" styleClass="label-puntiCaricati" text="0" />
+            <HBox alignment="CENTER_RIGHT" spacing="2.0" HBox.hgrow="NEVER">
+               <children>
+                  <Button fx:id="btnCaricatiMeno10" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnCaricatiPiuMeno" styleClass="button-piu-meno" text="-10" />
+                  <Button fx:id="btnCaricatiPiu10" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnCaricatiPiuMeno" styleClass="button-piu-meno" text="+10" />
+               </children>
+            </HBox>
          </children>
       </HBox>
    </children>

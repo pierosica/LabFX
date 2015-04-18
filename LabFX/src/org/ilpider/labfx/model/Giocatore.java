@@ -18,7 +18,7 @@ public class Giocatore {
 	private ControllerLayoutGiocatore controllerLayoutGiocatore;
 	private boolean tuttoChiuso;
 //	private boolean winner;
-	private int numeri = 2; // quanti sono i "numeri" sul tabellone - - DEFAULT 21
+	private int numeri = 21; // quanti sono i "numeri" sul tabellone - - DEFAULT 21
 	private Partita partitaModel;
 	private List<RigaNumero> listRigaNumero;
 	private RigaNumero rigaNumeroFix;

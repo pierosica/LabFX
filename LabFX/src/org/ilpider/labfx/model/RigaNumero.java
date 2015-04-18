@@ -1,7 +1,9 @@
 package org.ilpider.labfx.model;
 
 import java.io.IOException;
+
 import org.ilpider.labfx.view.ControllerLayoutRigaNumero;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -30,6 +32,9 @@ public class RigaNumero {
 		setLayoutRigaNumero();
 	}
 
+	/*
+	 * Getters e Setters
+	 */
 	public int getId() {
 		return id;
 	}
@@ -38,9 +43,6 @@ public class RigaNumero {
 		this.id = id;
 	}
 
-	/*
-	 * Getters e Setters
-	 */
 	public int getNumero() {
 		return numero;
 	}
