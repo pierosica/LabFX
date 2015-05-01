@@ -33,6 +33,16 @@ public class RigaNumero {
 	}
 
 	/*
+	 * metodi
+	 */
+	public int puntiDaAperte() {
+		int n = 0;
+//		System.out.println(controllerLayoutRigaNumero.chkAperte() * numero);
+		n = controllerLayoutRigaNumero.chkAperte() * numero;
+		return n;
+	}
+
+	/*
 	 * Getters e Setters
 	 */
 	public int getId() {
@@ -64,11 +74,10 @@ public class RigaNumero {
 	}
 
 	public void setMorto(boolean morto) {
-//		controllerLayoutRigaNumero.
 		this.morto = morto;
-		if(morto == true){
+		if (morto == true) {
 			controllerLayoutRigaNumero.setChkMorto();
-		} else if (morto==false) {
+		} else if (morto == false) {
 			controllerLayoutRigaNumero.setChkNonMorto();
 		}
 	}
@@ -82,7 +91,7 @@ public class RigaNumero {
 		try {
 			FXMLLoader loaderRigaNumero = new FXMLLoader();
 			loaderRigaNumero.setLocation(getClass().getResource(
-					"../view/LayoutRigaNumero.fxml"));
+					"/org/ilpider/labfx/view/LayoutRigaNumero.fxml"));
 			layoutRigaNumero = (AnchorPane) loaderRigaNumero.load();
 			controllerLayoutRigaNumero = loaderRigaNumero.getController();
 			controllerLayoutRigaNumero.setIDNumero(id);

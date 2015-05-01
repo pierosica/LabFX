@@ -37,13 +37,15 @@ public class LabFXMain extends Application {
 	 */
 	public void inizializzaLayoutLabFXRoot() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/LayoutLabFX.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(
+					"view/LayoutLabFX.fxml"));
 			layoutLabFXRoot = loader.load();
 
 			controllerLayoutLabFXRoot = loader.getController();
 			controllerLayoutLabFXRoot.setLabFXMain(this);
 			Scene scene = new Scene(layoutLabFXRoot);
-			scene.getStylesheets().add(getClass().getResource("view/labFX.css").toExternalForm());
+			scene.getStylesheets().add(
+					getClass().getResource("view/labFX.css").toExternalForm());
 
 			primaryStage.setScene(scene);
 			// primaryStage.setMinWidth(800);

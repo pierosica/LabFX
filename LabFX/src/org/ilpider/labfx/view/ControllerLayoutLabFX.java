@@ -35,7 +35,7 @@ public class ControllerLayoutLabFX {
 
 	private Partita partita;
 	private int numeroGiocatori;
-	private LabFXMain labFXMain;	// mi serve il riferimento per chiamare i metodi creaNuovapartita
+	private LabFXMain labFXMain; // mi serve il riferimento per chiamare i metodi creaNuovapartita
 									// e inizializzaLayoutGiocatori
 
 	/*
@@ -100,7 +100,8 @@ public class ControllerLayoutLabFX {
 			// dire che non è cambiato il numero dei giocatori e di conseguenza non devo
 			// rifare la List..gliela passo alla partita
 			if (partita.getNumeroGiocatori() == leggiNumeroGiocatori()) {
-				partita.getListaGiocatori().forEach(g -> g.setPuntiGiocatore(0));
+				partita.getListaGiocatori()
+						.forEach(g -> g.setPuntiGiocatore(0));
 				labFXMain.creaNuovaPartita(partita.getListaGiocatori());
 			} else {
 				// se è cambiato il numero dei giocatori faccio nuova partita con costruttore che fa creare anche la List
@@ -111,13 +112,15 @@ public class ControllerLayoutLabFX {
 		/*
 		 * dopo che nella partita si è creato il layoutGiocatori, aggiorno il layoutLabFX
 		 */
-//		partita.getLayoutGiocatori();
 		labFXMain.inizializzaLayoutGiocatori(partita.getLayoutGiocatori());
+		btnCalcolaPunteggi.setDisable(false);
 	}
 
 	@FXML
 	void doCalcolaPunteggi(ActionEvent event) {
-//		partita.getListaGiocatori().forEach(g -> g.getListRigaNumero().);
+//		partita.getListaGiocatori().forEach(g -> System.out.println(g.getNomeGiocatore() + g.isWinner()));
+		partita.calcolaPunteggio();
+		btnCalcolaPunteggi.setDisable(true);
 	}
 
 	@FXML
@@ -130,17 +133,9 @@ public class ControllerLayoutLabFX {
 	/*
 	 * getters e setters
 	 */
-//	public Partita getPartita() {
-//		return partita;
-//	}
-
 	public void setPartita(Partita partita) {
 		this.partita = partita;
 	}
-
-//	public LabFXMain getLabFXMain() {
-//		return labFXMain;
-//	}
 
 	public void setLabFXMain(LabFXMain labFXMain) {
 		this.labFXMain = labFXMain;

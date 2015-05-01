@@ -22,6 +22,8 @@ public class ControllerLayoutGiocatore {
 	@FXML
 	private TextField txtPuntiGiocatore;
 	@FXML
+	private Label lblPuntiFinali;
+	@FXML
 	private Label lblPuntiCaricati;
 	@FXML
 	private Button btnPiu1;
@@ -40,13 +42,13 @@ public class ControllerLayoutGiocatore {
 
 	@FXML
 	void initialize() {
-        assert lblPuntiCaricati != null : "fx:id=\"lblPuntiCaricati\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
-        assert txtNomeGiocatore != null : "fx:id=\"txtNomeGiocatore\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
-        assert txtPuntiGiocatore != null : "fx:id=\"txtPuntiGiocatore\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
-        assert btnPiu1 != null : "fx:id=\"btnPiu1\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
-        assert btnPiu10 != null : "fx:id=\"btnPiu10\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
-        assert btnMeno1 != null : "fx:id=\"btnMeno1\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
-        assert btnMeno10 != null : "fx:id=\"btnMeno10\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert lblPuntiCaricati != null : "fx:id=\"lblPuntiCaricati\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert txtNomeGiocatore != null : "fx:id=\"txtNomeGiocatore\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert txtPuntiGiocatore != null : "fx:id=\"txtPuntiGiocatore\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert btnPiu1 != null : "fx:id=\"btnPiu1\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert btnPiu10 != null : "fx:id=\"btnPiu10\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert btnMeno1 != null : "fx:id=\"btnMeno1\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
+		assert btnMeno10 != null : "fx:id=\"btnMeno10\" was not injected: check your FXML file 'LayoutGiocatore.fxml'.";
 
 		/*
 		 * invocata quando premo ENTER nella txtNomeGicatore
@@ -70,7 +72,8 @@ public class ControllerLayoutGiocatore {
 //		System.out.println(source.getClass().isInstance(btnMeno1));
 		int val = Integer.parseInt(source.getText());
 		try {
-			giocatoreModel.setPuntiGiocatore(giocatoreModel.getPuntiGiocatore() + val);
+			giocatoreModel.setPuntiGiocatore(giocatoreModel.getPuntiGiocatore()
+					+ val);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,14 +86,14 @@ public class ControllerLayoutGiocatore {
 //		System.out.println(source.getClass().isInstance(btnMeno1));
 		int val = Integer.parseInt(source.getText());
 		try {
-			giocatoreModel.setPuntiCaricati(giocatoreModel.getPuntiCaricati() + val);
+			giocatoreModel.setPuntiCaricati(giocatoreModel.getPuntiCaricati()
+					+ val);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 //		System.out.println("giocatore: " + giocatoreModel.getPuntiGiocatore() + " - " + event.getSource().getClass());
 	}
-	
-	
+
 	public void setGiocatoreModel(Giocatore giocatoreModel) {
 		this.giocatoreModel = giocatoreModel;
 	}
@@ -105,5 +108,9 @@ public class ControllerLayoutGiocatore {
 
 	public void setLblPuntiCaricati(int punti) {
 		lblPuntiCaricati.setText("" + punti);
+	}
+
+	public void setLblPuntiFinali(int punti) {
+		lblPuntiFinali.setText("avevi: " + punti);
 	}
 }

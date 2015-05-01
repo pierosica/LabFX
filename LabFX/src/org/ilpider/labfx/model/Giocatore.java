@@ -2,6 +2,7 @@ package org.ilpider.labfx.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.ilpider.labfx.view.ControllerLayoutGiocatore;
 
@@ -17,7 +18,7 @@ public class Giocatore {
 	private GridPane viewGiocatore;
 	private ControllerLayoutGiocatore controllerLayoutGiocatore;
 	private boolean tuttoChiuso;
-//	private boolean winner;
+	private boolean winner;
 	private int numeri = 21; // quanti sono i "numeri" sul tabellone - - DEFAULT 21
 	private Partita partitaModel;
 	private List<RigaNumero> listRigaNumero;
@@ -40,21 +41,16 @@ public class Giocatore {
 	/*
 	 * metodi
 	 */
-	public ControllerLayoutGiocatore getControllerLayoutGiocatore() {
-		return controllerLayoutGiocatore;
-	}
+	public void contaAperti() {
+		listRigaNumero.forEach(n -> System.out.println(n.getNumero() + ""
+				+ n.isChiuso()));
+		Stream<RigaNumero> righeAperte = listRigaNumero.stream().filter(
+				n -> !n.isChiuso());
+//		righeAperte.forEach(r -> System.out.println(r.puntiDaAperte()));
+//		controllerLayoutGiocatore.setTxtPunti(getPuntiGiocatore() + " totalizza: " );
+		righeAperte.forEach(a -> puntiGiocatore = puntiGiocatore
+				+ a.puntiDaAperte());
 
-	public void creaListRigaNumero() {
-
-		listRigaNumero = new ArrayList<RigaNumero>();
-
-		for (int i = 0; i < numeri; i++) {
-			rigaNumeroFix = new RigaNumero(i);
-			rigaNumeroFix.setGiocatoreModel(this);
-			rigaNumeroFix.getLayoutRigaNumero().autosize();
-			listRigaNumero.add(rigaNumeroFix);
-			viewGiocatore.add(rigaNumeroFix.getLayoutRigaNumero(), 0, 3 + i);
-		}
 	}
 
 	/*
@@ -81,23 +77,6 @@ public class Giocatore {
 		return puntiGiocatore;
 	}
 
-	public GridPane getViewGiocatore() {
-		return viewGiocatore;
-	}
-
-	private void setViewGiocatore() {
-		try {
-			FXMLLoader loaderViewGiocatore = new FXMLLoader();
-			loaderViewGiocatore.setLocation(getClass().getResource(
-					"../view/LayoutGiocatore.fxml"));
-			this.viewGiocatore = loaderViewGiocatore.load();
-			controllerLayoutGiocatore = loaderViewGiocatore.getController();
-			controllerLayoutGiocatore.setGiocatoreModel(this);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void setPuntiGiocatore(int i) {
 		this.puntiGiocatore = i;
 		controllerLayoutGiocatore.setTxtPunti("" + i);
@@ -112,17 +91,25 @@ public class Giocatore {
 		controllerLayoutGiocatore.setLblPuntiCaricati(puntiCaricati);
 	}
 
-//	public boolean isWinner() {
-//		return winner;
-//	}
+	public GridPane getViewGiocatore() {
+		return viewGiocatore;
+	}
 
-//	public void setWinner(boolean winner) {
-//		this.winner = winner;
-//	}
+	private void setViewGiocatore() {
+		try {
+			FXMLLoader loaderViewGiocatore = new FXMLLoader();
+			loaderViewGiocatore.setLocation(getClass().getResource(
+					"/org/ilpider/labfx/view/LayoutGiocatore.fxml"));
+			this.viewGiocatore = loaderViewGiocatore.load();
+			controllerLayoutGiocatore = loaderViewGiocatore.getController();
+			controllerLayoutGiocatore.setGiocatoreModel(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public boolean isTuttoChiuso() {
 
-		listRigaNumero.stream().allMatch(n -> n.isChiuso());
 		if (listRigaNumero.stream().allMatch(n -> n.isChiuso())) {
 			tuttoChiuso = true;
 			return tuttoChiuso;
@@ -136,8 +123,30 @@ public class Giocatore {
 		this.tuttoChiuso = tuttoChiuso;
 	}
 
+	public boolean isWinner() {
+		winner = partitaModel.esisteWinner();
+		return winner;
+	}
+
+	public void setWinner(boolean winner) {
+		this.winner = winner;
+	}
+
 	public List<RigaNumero> getListRigaNumero() {
 		return listRigaNumero;
+	}
+
+	public void creaListRigaNumero() {
+
+		listRigaNumero = new ArrayList<RigaNumero>();
+
+		for (int i = 0; i < numeri; i++) {
+			rigaNumeroFix = new RigaNumero(i);
+			rigaNumeroFix.setGiocatoreModel(this);
+			rigaNumeroFix.getLayoutRigaNumero().autosize();
+			listRigaNumero.add(rigaNumeroFix);
+			viewGiocatore.add(rigaNumeroFix.getLayoutRigaNumero(), 0, 3 + i);
+		}
 	}
 
 	public Partita getPartitaModel() {
@@ -147,4 +156,13 @@ public class Giocatore {
 	public void setPartitaModel(Partita partitaModel) {
 		this.partitaModel = partitaModel;
 	}
+
+	public void scriviPuntiFinali(int puntiGiocatore) {
+		controllerLayoutGiocatore.setLblPuntiFinali(puntiGiocatore);
+	}
+
+//	public ControllerLayoutGiocatore getControllerLayoutGiocatore() {
+//		return controllerLayoutGiocatore;
+//	}
+
 }

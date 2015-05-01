@@ -29,7 +29,7 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblBottom" text="Label" />
+            <Label fx:id="lblBottom" />
          </children>
       </HBox>
    </bottom>

@@ -51,13 +51,11 @@ public class Partita {
 		}
 	}
 
-	private GridPane creaLayoutGiocatori(List<Giocatore> listaGiocatori) { // creo
-// il layout che contiene i pannelli dei singoli Giocatore
-
+	private GridPane creaLayoutGiocatori(List<Giocatore> listaGiocatori) { // creo il layout che contiene i pannelli dei singoli Giocatore
 		try {
 			FXMLLoader loaderLayoutGiocatori = new FXMLLoader();
 			loaderLayoutGiocatori.setLocation(getClass().getResource(
-					"../view/LayoutGiocatori.fxml"));
+					"/org/ilpider/labfx/view/LayoutGiocatori.fxml"));
 			layoutGiocatori = (GridPane) loaderLayoutGiocatori.load();
 			// ciclo sulla lista per assegnare tutte le viewGiocatore al
 			// GridPane LayoutGiocatori
@@ -65,12 +63,21 @@ public class Partita {
 				ColumnConstraints col = new ColumnConstraints();
 				col.setFillWidth(true);
 				layoutGiocatori.getColumnConstraints().add(col);
-				layoutGiocatori.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
+				layoutGiocatori
+						.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return layoutGiocatori;
+	}
+
+	public void calcolaPunteggio() {
+		listaGiocatori.forEach(h -> h.scriviPuntiFinali(h.getPuntiGiocatore()));
+		listaGiocatori.forEach(g -> g.contaAperti());
+		listaGiocatori.forEach(b -> System.out.println(b.getNomeGiocatore()
+				+ " ha fatto " + b.getPuntiGiocatore() + " punti totali"));
+		listaGiocatori.forEach(f -> f.setPuntiGiocatore(f.getPuntiGiocatore()));
 	}
 
 	/*
@@ -84,20 +91,30 @@ public class Partita {
 				g -> g.getListRigaNumero().get(numero).isChiuso())) {
 			Stream<Giocatore> giocatoriNumeroChiuso = listaGiocatori.stream()
 					.filter(c -> c.getListRigaNumero().get(numero).isChiuso());
-			giocatoriNumeroChiuso.forEach(n -> n.getListRigaNumero().get(numero).setMorto(true));
+			giocatoriNumeroChiuso.forEach(n -> n.getListRigaNumero()
+					.get(numero).setMorto(true));
 			return true;
 		} else {
-			listaGiocatori.forEach(n -> n.getListRigaNumero().get(numero).setMorto(false));
+			listaGiocatori.forEach(n -> n.getListRigaNumero().get(numero)
+					.setMorto(false));
 			return false;
 		}
 	}
 
 	public boolean esisteWinner() {
-//		listaGiocatori.forEach(g -> g.getListRigaNumero().forEach(n -> n.isChiuso()));
-//		Stream<Giocatore> giocatoreWinner = listaGiocatori.stream().filter(
-//				w -> w.getListRigaNumero().forEach(n -> n.isChiuso()));
-		
-		return true;
+		// trovo il Giocatore che ha il punteggio piu basso
+		Giocatore giocatorePuntiBassi = listaGiocatori
+				.stream()
+				.sorted((e1, e2) -> Integer.compare(e1.getPuntiGiocatore(),
+						e2.getPuntiGiocatore())).findFirst().get();
+		// se lo stesso ha anche isTuttoChiuso = true lo setto come winner
+		if (giocatorePuntiBassi.isTuttoChiuso()) {
+			System.out.println("setto il winner");
+			giocatorePuntiBassi.setWinner(true);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void sommaPunti(int id) {

@@ -39,9 +39,10 @@
          </children>
       </HBox>
       <TextField fx:id="txtNomeGiocatore" layoutY="3.0" promptText="Nome Giocatore" />
-      <HBox alignment="CENTER_RIGHT" spacing="20.0" GridPane.rowIndex="2">
+      <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.rowIndex="2">
          <children>
-            <Label text="ti hanno caricato: " />
+            <Label fx:id="lblPuntiFinali" maxWidth="1.7976931348623157E308" minWidth="80.0" />
+            <Label text="caricati: " />
             <Label fx:id="lblPuntiCaricati" alignment="CENTER_RIGHT" minWidth="60.0" styleClass="label-puntiCaricati" text="0" />
             <HBox alignment="CENTER_RIGHT" spacing="2.0" HBox.hgrow="NEVER">
                <children>
