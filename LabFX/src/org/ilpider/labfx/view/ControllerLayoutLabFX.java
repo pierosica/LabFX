@@ -78,7 +78,7 @@ public class ControllerLayoutLabFX {
 	}
 
 	@FXML
-	void doNuovaPartita(ActionEvent event) {
+	public void doNuovaPartita(ActionEvent event) {
 
 		leggiNumeroGiocatori();
 		if (partita == null) {

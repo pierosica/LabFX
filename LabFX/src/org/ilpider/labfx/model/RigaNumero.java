@@ -7,9 +7,9 @@ import org.ilpider.labfx.view.ControllerLayoutRigaNumero;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
-public class RigaNumero {
+public class RigaNumero extends AnchorPane {
 
-	private int id;
+	private int idRiga;
 	private int numero;
 	private boolean chiuso;
 	private boolean morto;
@@ -20,11 +20,11 @@ public class RigaNumero {
 	/*
 	 * costruttore
 	 */
-	public RigaNumero(int id) {
+	public RigaNumero(int idRiga) {
 
-		this.id = id;
-		numero = id + 1;
-		if (id == 20) {
+		this.idRiga = idRiga;
+		numero = idRiga + 1;
+		if (idRiga == 20) {
 			numero = 25;
 		}
 		this.chiuso = false;
@@ -45,12 +45,12 @@ public class RigaNumero {
 	/*
 	 * Getters e Setters
 	 */
-	public int getId() {
-		return id;
+	public int getIdRiga() {
+		return idRiga;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int idRiga) {
+		this.idRiga = idRiga;
 	}
 
 	public int getNumero() {
@@ -94,7 +94,7 @@ public class RigaNumero {
 					"/org/ilpider/labfx/view/LayoutRigaNumero.fxml"));
 			layoutRigaNumero = (AnchorPane) loaderRigaNumero.load();
 			controllerLayoutRigaNumero = loaderRigaNumero.getController();
-			controllerLayoutRigaNumero.setIDNumero(id);
+			controllerLayoutRigaNumero.setIDNumero(idRiga);
 			controllerLayoutRigaNumero.setNumero(numero);
 			controllerLayoutRigaNumero.setRigaNumeroModel(this);
 		} catch (IOException e) {

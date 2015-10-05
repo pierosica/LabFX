@@ -5,15 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane gridLinesVisible="true" prefHeight="21.0" prefWidth="56.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" />
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" />
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" />
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" />
-  </columnConstraints>
+
+<GridPane focusTraversable="true" gridLinesVisible="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   
-  <rowConstraints>
-    <RowConstraints maxHeight="800.0" vgrow="ALWAYS" />
-  </rowConstraints>
 </GridPane>

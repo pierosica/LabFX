@@ -40,7 +40,7 @@ public class ControllerLayoutRigaNumero {
 							+ numero);
 		} else if (rigaNumeroModel.isChiuso()) {
 			rigaNumeroModel.getGiocatoreModel().getPartitaModel()
-					.sommaPunti(rigaNumeroModel.getId());
+					.sommaPunti(rigaNumeroModel.getIdRiga());
 		} else if (!chkA.isSelected()) {
 			chkA.setSelected(true);
 			chkA.setUserData("preso");

@@ -62,7 +62,6 @@ public class Partita {
 			for (Giocatore g : listaGiocatori) {
 				ColumnConstraints col = new ColumnConstraints();
 				col.setFillWidth(true);
-				layoutGiocatori.getColumnConstraints().add(col);
 				layoutGiocatori
 						.add(g.getViewGiocatore(), g.getIDGiocatore(), 0);
 			}

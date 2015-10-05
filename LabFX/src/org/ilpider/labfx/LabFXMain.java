@@ -59,7 +59,15 @@ public class LabFXMain extends Application {
 
 	public void inizializzaLayoutGiocatori(GridPane layoutGiocatori) {
 		layoutLabFXRoot.setCenter(layoutGiocatori);
-		primaryStage.sizeToScene();
+		
+		if (primaryStage.isMaximized()) {
+			// non faccio nulla se la finestra è massimizzata
+		} else {
+			
+			primaryStage.sizeToScene();
+		}
+		
+//		layoutGiocatori.getChildren()
 	}
 
 	/*
@@ -75,6 +83,7 @@ public class LabFXMain extends Application {
 	public void creaNuovaPartita(int numeroGiocatori) {
 		partita = new Partita(numeroGiocatori);
 		controllerLayoutLabFXRoot.setPartita(partita);
+		inizializzaLayoutGiocatori(partita.getLayoutGiocatori());
 	}
 
 	public void creaNuovaPartita(List<Giocatore> listaGiocatori) {

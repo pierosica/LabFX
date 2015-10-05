@@ -145,8 +145,13 @@ public class Giocatore {
 			rigaNumeroFix.setGiocatoreModel(this);
 			rigaNumeroFix.getLayoutRigaNumero().autosize();
 			listRigaNumero.add(rigaNumeroFix);
+			
 			viewGiocatore.add(rigaNumeroFix.getLayoutRigaNumero(), 0, 3 + i);
+			
 		}
+
+		
+
 	}
 
 	public Partita getPartitaModel() {

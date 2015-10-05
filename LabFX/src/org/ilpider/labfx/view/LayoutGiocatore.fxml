@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<GridPane alignment="TOP_CENTER" stylesheets="@labFX.css" vgap="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
+<GridPane alignment="TOP_CENTER" scaleShape="false" stylesheets="@labFX.css" vgap="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ilpider.labfx.view.ControllerLayoutGiocatore">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="350.0" />
    </columnConstraints>
@@ -35,8 +35,14 @@
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
             </VBox>
          </children>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
       </HBox>
       <TextField fx:id="txtNomeGiocatore" layoutY="3.0" promptText="Nome Giocatore" />
       <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.rowIndex="2">
@@ -44,11 +50,14 @@
             <Label fx:id="lblPuntiFinali" maxWidth="1.7976931348623157E308" minWidth="80.0" />
             <Label text="caricati: " />
             <Label fx:id="lblPuntiCaricati" alignment="CENTER_RIGHT" minWidth="60.0" styleClass="label-puntiCaricati" text="0" />
-            <HBox alignment="CENTER_RIGHT" spacing="2.0" HBox.hgrow="NEVER">
+            <HBox alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="NEVER">
                <children>
                   <Button fx:id="btnCaricatiMeno10" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnCaricatiPiuMeno" styleClass="button-piu-meno" text="-10" />
                   <Button fx:id="btnCaricatiPiu10" minHeight="22.0" minWidth="22.0" mnemonicParsing="false" onAction="#doBtnCaricatiPiuMeno" styleClass="button-piu-meno" text="+10" />
                </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
             </HBox>
          </children>
       </HBox>
